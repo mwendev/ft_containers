@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:12:03 by mwen              #+#    #+#             */
-/*   Updated: 2022/05/31 22:51:40 by mwen             ###   ########.fr       */
+/*   Updated: 2022/06/01 11:57:09 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,10 @@ namespace ft
 		pair& operator= (const pair& pr)
 		{
 			if (this != &pr)
+			{
 				first = pr.first;
 				second = pr.second;
+			}
 			return (*this);
 		}
 	};

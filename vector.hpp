@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 21:06:53 by mwen              #+#    #+#             */
-/*   Updated: 2022/05/31 23:24:30 by mwen             ###   ########.fr       */
+/*   Updated: 2022/06/01 11:58:40 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,8 +305,6 @@ namespace ft
 			vector		tmp;
 			size_type	distance = position - this->begin();
 
-			if (distance < 0)
-				return position;
 			if (distance < _capacity)
 			{
 				tmp._p = tmp._allocator.allocate(_capacity);
@@ -344,8 +342,6 @@ namespace ft
 			vector		tmp;
 			size_type	distance = position - this->begin();
 
-			if (distance < 0 || !n)
-				return ;
 			if (distance + n <= _capacity)
 			{
 				tmp._p = tmp._allocator.allocate(_capacity);
@@ -479,8 +475,6 @@ namespace ft
 			vector		tmp;
 			size_type	distance = position - this->begin();
 
-			if (distance < 0 || !first)
-				return ;
 			if (distance + first <= _capacity)
 			{
 				tmp._p = tmp._allocator.allocate(_capacity);
@@ -520,8 +514,6 @@ namespace ft
 			size_type	distance = position - this->begin();
 			size_type	n = last - first;
 
-			if (distance < 0)
-				return ;
 			tmp._capacity = _capacity;
 			tmp._p = tmp._allocator.allocate(_capacity);
 			for (size_type i = 0; i < distance; i++)
