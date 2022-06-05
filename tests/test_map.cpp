@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 21:03:46 by mwen              #+#    #+#             */
-/*   Updated: 2022/05/31 23:21:19 by mwen             ###   ########.fr       */
+/*   Updated: 2022/06/04 21:21:54 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ struct classcomp {
 bool operator() (const char& lhs, const char& rhs) const
 	{return lhs<rhs;}
 };
+
+template<typename T, typename U>
+void	print_map(std::ofstream& file, const ft::map<T, U>& m, std::string comment = "")
+{
+	file << comment;
+	for (typename ft::map<T, U>::const_iterator it = m.begin(); it != m.end(); it++)
+		file << it->first << " = " << it->second << "; ";
+	file << '\n';
+}
 
 void	test_map(std::ofstream& file)
 {
@@ -201,6 +210,177 @@ void	test_map(std::ofstream& file)
 	psize = sizeof(ft::map<char,int>::value_type)*5;
 	file << "Output: The allocated array has a size of " << psize << " bytes.\n";
 	first.get_allocator().deallocate(p,5);
+
+	ft::map<std::string, int> m1;
+	file << m1.empty() << std::endl;
+
+	m1["CPU"] = 10;
+	m1["GPU"] = 15;
+	m1["RAM"] = 20;
+
+	file << m1.empty() << std::endl;
+
+	print_map(file, m1, "Initial map: ");
+
+	m1["CPU"] = 25;
+	m1["SSD"] = 30;
+	print_map(file, m1, "Updated map: ");
+
+	file << "m1[UPS] = " << m1["UPS"] << '\n';
+	print_map(file, m1, "Updated map: ");
+
+	m1.erase("GPU");
+	print_map(file, m1, "After erase: ");
+
+	file << "m.size() = " << m1.size() << '\n';
+
+	ft::map<std::string, int> m2 = m1;
+	print_map(file, m2, "Copy constructed map: ");
+
+	file << std::boolalpha << "m1 and m2 are equivalent: " << (m1 == m2) << '\n';
+	m2["PSU"] = 34;
+	m2["sPeripherals"] = 12;
+	print_map(file, m2, "Updated map: ");
+	file << std::boolalpha << "m1 and m2 are equivalent: " << (m1 == m2) << '\n';
+
+	m1.swap(m2);
+	print_map(file, m2, "Swapped map: ");
+
+	ft::map<std::string, int> m3(m1);
+	ft::map<std::string, int>::iterator mit01 = m3.begin();
+	ft::map<std::string, int>::iterator mit02 = m3.end();
+	mit02--;
+
+	ft::map<std::string, int>::reverse_iterator rmit01 = m3.rbegin();
+	ft::map<std::string, int>::reverse_iterator rmit02 = m3.rend();
+	rmit02--;
+
+	print_map(file, m3, "m3: ");
+
+	file << "Begin --- Key: " << mit01->first << " | Value: " << mit01->second << std::endl;
+	file << "End   --- Key: " << mit02->first << " | Value: " << mit02->second << std::endl;
+	file << "Reverse Begin --- Key: " << rmit01->first << " | Value: " << rmit01->second << std::endl;
+	file << "Reverse End   --- Key: " << rmit02->first << " | Value: " << rmit02->second << std::endl;
+
+	ft::map<std::string, int> m4(mit01, mit02);
+	print_map(file, m4, "m4: ");
+	file << "m4 size = " << m4.size() << std::endl;
+	file << "m4 size = " << m4.max_size() << std::endl;
+
+	// ft::map<std::string, int>::allocator_type mapalloc = m4.get_allocator();
+
+	ft::map<std::string, int> m5 = m4;
+
+	m2["Mousepad"] = 5;
+	m5.insert(m2.begin(), m2.end());
+	print_map(file, m2, "m2: ");
+	print_map(file, m5, "m5: ");
+
+	ft::map<std::string, int> m6 = m5;
+	m6.erase(m6.begin());
+	print_map(file, m6, "m6: ");
+	print_map(file, m2, "m2: ");
+
+	file << "M6 size is " << m6.size() << std::endl;
+	m6.erase(m6.begin(), m6.end());
+	print_map(file, m6, "erased: m6: ");
+
+	m6.swap(m5);
+	print_map(file, m6, "m6: ");
+	print_map(file, m5, "swapped with m5: ");
+
+	file << m5.count("RAM") << std::endl;
+	file << m5.count("HDD") << std::endl;
+
+	if (m5.find("RAM") == m5.end())
+			file << "RAM not found" << std::endl;
+	if (m5.find("UPS") == m5.end())
+			file << "UPS not found" << std::endl;
+	print_map(file, m5, "m5: ");
+	ft::pair<ft::map<std::string, int>::iterator, ft::map<std::string, int>::iterator> range00 = m6.equal_range("PSU");
+
+	file << range00.first->first << " = " << range00.first->second << std::endl;
+	file << range00.second->first << " = " << range00.second->second << std::endl;
+	file << (*m6.lower_bound("PSU")).first << " = " << (*m6.lower_bound("PSU")).second << std::endl;
+	file << (*m6.upper_bound("PSU")).first << " = " << (*m6.upper_bound("PSU")).second << std::endl;
+	file << "1) " << std::boolalpha << (m3 == m5) << std::endl;
+	file << "2) " << std::boolalpha << (m3 != m5) << std::endl;
+	file << "3) " << std::boolalpha << (m3 <  m5) << std::endl;
+	file << "4) " << std::boolalpha << (m3 >  m5) << std::endl;
+	file << "5) " << std::boolalpha << (m3 >= m5) << std::endl;
+	file << "6) " << std::boolalpha << (m3 <= m5) << std::endl;
+
+	ft::map<std::string, int>::key_compare key_comp_map = m1.key_comp();
+	ft::map<std::string, int>::value_compare val_comp_map = m1.value_comp();
+
+	file << std::boolalpha << "Python is lexicographically less than C: " << key_comp_map("Python", "C") << '\n';
+	file << (std::string("Python") < std::string("C")) << '\n';
+
+	ft::map<std::string, int>::value_type value1_map = ft::make_pair("C", 2);
+	ft::map<std::string, int>::value_type value2_map = ft::make_pair("C++", 7);
+
+	file << std::boolalpha << "C is lexicographically less than C++: " << val_comp_map(value1_map, value2_map) << '\n';
+	file << "C comp C++ : " << (std::string("C") < std::string("C++")) << '\n';
+
+	ft::map<std::string, int>::iterator it01 = m1.find("SSD");
+	(void)it01;
+	file << "Key \"SSD\" is in the map: " << m1.count("SSD") << '\n';
+	file << "Key \"Stereo\" is in the map: " << m1.count("Stereo") << '\n';
+	m1.clear();
+	file << std::boolalpha << "Map is empty: " << m1.empty() << '\n';
+
+	ft::map<std::string, int>::reverse_iterator mrev2;
+	ft::map<std::string, int>::const_iterator mci1;
+	ft::map<std::string, int>::iterator mi1;
+
+	file << m1.empty() << std::endl;
+
+	m1["CPU"] = 10;
+	m1["GPU"] = 15;
+	m1["RAM"] = 20;
+
+	file << m1.empty() << std::endl;
+
+	print_map(file, m1, "Initial map: ");
+
+	m1["CPU"] = 25;
+	m1["SSD"] = 30;
+	print_map(file, m1, "Updated map: ");
+
+	file << "m1[UPS] = " << m1["UPS"] << '\n';
+	print_map(file, m1, "Updated map: ");
+	mci1 = m1.begin();
+	file << "const iterator" << std::endl;
+	while (mci1 != m1.end())
+	{
+		file << (*mci1).first << std::endl;
+		mci1++;
+	}
+	file << "iterator" << std::endl;
+	mi1 = m1.begin();
+	while (mi1 != m1.end())
+	{
+		file << (*mi1).first << std::endl;
+		mi1++;
+	}
+	file << "reverse_iterator" << std::endl;
+	mrev2 = m1.rbegin();
+	while (mrev2 != m1.rend())
+	{
+		file << (*mrev2).first << std::endl;
+		mrev2++;
+	}
+	
+	file << "const_reverse_iterator" << std::endl;
+	ft::map<std::string, int>::const_reverse_iterator mrev1;
+	ft::map<std::string, int>::const_reverse_iterator mrev3;
+	mrev1 = m1.rbegin();
+	mrev3 = m1.rend();
+	while (mrev1 != m1.rend())
+	{
+		file << (*mrev1).first << std::endl;
+		mrev1++;
+	}
 
 	gettimeofday(&end, NULL);
 	double time_taken;

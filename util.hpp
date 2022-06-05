@@ -6,27 +6,159 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:12:03 by mwen              #+#    #+#             */
-/*   Updated: 2022/06/01 11:57:09 by mwen             ###   ########.fr       */
+/*   Updated: 2022/06/04 15:01:35 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTIL_HPP
 # define UTIL_HPP
 
+#include <iostream>
+
 namespace ft
 {
-	template <bool condition, class T = void>
+	// template<typename _Tp>
+	// struct __is_empty_
+	// { 
+	// private:
+	// 	template<typename>
+	// 		struct __first { };
+	// 	template<typename _Up>
+	// 		struct __second : public _Up { };
+	// public:
+	// 	enum { __value = sizeof(__first<_Tp>) == sizeof(__second<_Tp>)};
+	// };
+
+	// template<typename _Alloc, bool = __is_empty_(_Alloc)>
+	// struct __alloc_swap
+	// {
+	// 	static void _S_do_it(const _Alloc&, const _Alloc&) { }
+	// };
+
+	// template<typename _Alloc>
+	// struct __alloc_swap<_Alloc, false>
+	// {
+	// 	static void _S_do_it(const _Alloc& __one, const _Alloc& __two)
+	// 	{ if (__one != __two)
+	// 		std::swap(__one, __two); }
+	// };
+
+	template <bool, typename>
 	struct enable_if
-	{
-		
-	};
+	{	};
 
 	template <class T>
 	struct enable_if <true, T>
+	{ typedef T type; };
+
+	struct __true_type {};
+	struct __false_type {};
+
+	template<typename, typename>
+	struct __are_same
 	{
-		typedef T type;
+		enum { __value = 0 };
+		typedef __false_type __type;
 	};
-	
+
+	template<typename _Tp>
+	struct __are_same<_Tp, _Tp>
+	{
+		enum { __value = 1 };
+		typedef __true_type __type;
+	};
+
+	template<typename _Tp>
+	struct __is_integer
+	{
+		enum { __value = 0 };
+		typedef __false_type __type;
+	};
+
+	template<>
+	struct __is_integer<bool>
+	{
+		enum { __value = 1 };
+		typedef __true_type __type;
+	};
+
+	template<>
+	struct __is_integer<char>
+	{
+		enum { __value = 1 };
+		typedef __true_type __type;
+	};
+
+	template<>
+	struct __is_integer<signed char>
+	{
+		enum { __value = 1 };
+		typedef __true_type __type;
+	};
+
+	template<>
+	struct __is_integer<unsigned char>
+	{
+		enum { __value = 1 };
+		typedef __true_type __type;
+	};
+
+	template<>
+	struct __is_integer<short>
+	{
+		enum { __value = 1 };
+		typedef __true_type __type;
+	};
+
+	template<>
+	struct __is_integer<unsigned short>
+	{
+		enum { __value = 1 };
+		typedef __true_type __type;
+	};
+
+	template<>
+	struct __is_integer<int>
+	{
+		enum { __value = 1 };
+		typedef __true_type __type;
+	};
+
+	template<>
+	struct __is_integer<unsigned int>
+	{
+		enum { __value = 1 };
+		typedef __true_type __type;
+	};
+
+	template<>
+	struct __is_integer<long>
+	{
+		enum { __value = 1 };
+		typedef __true_type __type;
+	};
+
+	template<>
+	struct __is_integer<unsigned long>
+	{
+		enum { __value = 1 };
+		typedef __true_type __type;
+	};
+
+	template<>
+	struct __is_integer<long long>
+	{
+		enum { __value = 1 };
+		typedef __true_type __type;
+	};
+
+	template<>
+	struct __is_integer<unsigned long long>
+	{
+		enum { __value = 1 };
+		typedef __true_type __type;
+	};
+
 	template <class T, T v>
 	struct integral_constant
 	{

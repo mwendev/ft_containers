@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 21:39:20 by mwen              #+#    #+#             */
-/*   Updated: 2022/05/30 22:43:33 by mwen             ###   ########.fr       */
+/*   Updated: 2022/06/04 17:33:48 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STACK_HPP
 
 # include "vector.hpp"
+# include <deque>
 
 namespace ft
 {
@@ -25,26 +26,26 @@ namespace ft
 		typedef Container	container_type;
 		typedef size_t		size_type;
 
-		explicit stack (const container_type& ctnr = container_type()) { self = ctnr; }
+		explicit stack (const container_type& ctnr = container_type()) { c = ctnr; }
 
-		bool				empty() const { return self.empty(); }
-		size_type			size() const { return self.size(); }
-		value_type&			top() { return *(--self.end()); }
-		const value_type&	top() const { return *(--self.end()); }
-		void				push(const value_type& val) { self.push_back(val); }
-		void				pop() { self.pop_back(); }
+		bool				empty() const { return c.empty(); }
+		size_type			size() const { return c.size(); }
+		value_type&			top() { return *(--c.end()); }
+		const value_type&	top() const { return *(--c.end()); }
+		void				push(const value_type& val) { c.push_back(val); }
+		void				pop() { c.pop_back(); }
 
 		friend bool operator== (const stack<T, Container>& lhs, const stack<T, Container>& rhs)
-		{ return lhs.self == rhs.self; }
+		{ return lhs.c == rhs.c; }
 		
 		friend bool operator!= (const stack<T, Container>& lhs, const stack<T, Container>& rhs)
 		{ return !(lhs == rhs); }
 
   		friend bool operator<  (const stack<T, Container>& lhs, const stack<T, Container>& rhs)
-		{ return lhs.self < rhs.self; }
+		{ return lhs.c < rhs.c; }
 
 		friend bool operator>  (const stack<T, Container>& lhs, const stack<T, Container>& rhs)
-		{ return lhs.self > rhs.self; }
+		{ return lhs.c > rhs.c; }
 
 		friend bool operator<= (const stack<T, Container>& lhs, const stack<T, Container>& rhs)
 		{ return !(lhs > rhs); }
@@ -52,8 +53,8 @@ namespace ft
 		friend bool operator>= (const stack<T, Container>& lhs, const stack<T, Container>& rhs)
 		{ return !(lhs < rhs); }
 
-	private:
-		container_type	self;
+	protected:
+		container_type	c;
 	};
 }
 

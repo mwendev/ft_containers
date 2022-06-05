@@ -6,12 +6,12 @@
 #    By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/18 11:39:36 by mwen              #+#    #+#              #
-#    Updated: 2022/06/01 12:44:34 by mwen             ###   ########.fr        #
+#    Updated: 2022/06/04 20:59:39 by mwen             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	ft_containers
-SRC		=	*.cpp
+SRC		=	*.cpp tests/*.cpp
 CC		=	c++
 CFLAG	=	-Wall -Wextra -Werror -std=c++98
 
@@ -22,11 +22,11 @@ all:	$(NAME)
 $(NAME):
 	$(CC) $(CFLAG) $(SRC) -D TEST=1 -o $(NAME)
 	printf '\033[32m%s\n\033[0m' "Running tests on STL..."
-	./$(NAME)
+	./$(NAME) 1
 
 	$(CC) $(CFLAG) $(SRC) -D TEST=0 -o $(NAME)
 	printf '\033[32m%s\n\033[0m' "Running tests on ft_containers..."
-	./$(NAME)
+	./$(NAME) 1
 
 	-diff STL_output.txt ft_containers_output.txt >> result.txt
 	printf '\033[32m[ ✔ ] %s\n\033[0m' "Check result.txt!"

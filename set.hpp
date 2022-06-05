@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:58:36 by mwen              #+#    #+#             */
-/*   Updated: 2022/05/31 22:25:10 by mwen             ###   ########.fr       */
+/*   Updated: 2022/06/05 10:23:37 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ namespace ft
 		_Rep_type	tree;
 
 	public:
-		typedef typename _Rep_type::iterator					iterator;
+		typedef typename _Rep_type::const_iterator				iterator;
 		typedef typename _Rep_type::const_iterator				const_iterator;
-		typedef typename _Rep_type::reverse_iterator			reverse_iterator;
+		typedef typename _Rep_type::const_reverse_iterator		reverse_iterator;
 		typedef typename _Rep_type::const_reverse_iterator		const_reverse_iterator;
 		typedef typename _Rep_type::size_type					size_type;
 		typedef typename _Rep_type::difference_type				difference_type;
@@ -96,7 +96,40 @@ namespace ft
 
 		allocator_type				get_allocator() const { return tree.get_allocator(); }
 
+		template<typename _K1, typename _C1, typename _A1>
+		friend bool operator==(const set<_K1, _C1, _A1>&, const set<_K1, _C1, _A1>&);
+		template<typename _K1, typename _C1, typename _A1>
+		friend bool operator<(const set<_K1, _C1, _A1>&, const set<_K1, _C1, _A1>&);
 	};
+	
+	template<typename _Key, typename _Compare, typename _Alloc>
+	inline bool operator==(const set<_Key, _Compare, _Alloc>& __x, const set<_Key, _Compare, _Alloc>& __y)
+	{ return __x.tree == __y.tree; }
+
+	template<typename _Key, typename _Compare, typename _Alloc>
+	inline bool operator<(const set<_Key, _Compare, _Alloc>& __x, const set<_Key, _Compare, _Alloc>& __y)
+	{ return __x.tree < __y.tree; }
+
+	template<typename _Key, typename _Compare, typename _Alloc>
+	inline bool operator!=(const set<_Key, _Compare, _Alloc>& __x, const set<_Key, _Compare, _Alloc>& __y)
+	{ return !(__x == __y); }
+
+	template<typename _Key, typename _Compare, typename _Alloc>
+	inline bool operator>(const set<_Key, _Compare, _Alloc>& __x, const set<_Key, _Compare, _Alloc>& __y)
+	{ return __y < __x; }
+
+	template<typename _Key, typename _Compare, typename _Alloc>
+	inline bool operator<=(const set<_Key, _Compare, _Alloc>& __x, const set<_Key, _Compare, _Alloc>& __y)
+	{ return !(__y < __x); }
+
+	template<typename _Key, typename _Compare, typename _Alloc>
+	inline bool operator>=(const set<_Key, _Compare, _Alloc>& __x, const set<_Key, _Compare, _Alloc>& __y)
+	{ return !(__x < __y); }
+
+	template<typename _Key, typename _Compare, typename _Alloc>
+	inline void swap(set<_Key, _Compare, _Alloc>& __x, set<_Key, _Compare, _Alloc>& __y)
+	{ __x.swap(__y); }
+
 }
 
 #endif

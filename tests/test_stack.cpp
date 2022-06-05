@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 22:18:34 by mwen              #+#    #+#             */
-/*   Updated: 2022/05/31 23:21:25 by mwen             ###   ########.fr       */
+/*   Updated: 2022/06/04 20:51:40 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@
 #else
 	#include "../stack.hpp"
 #endif
+
+template<typename T>
+void	print_stack(std::ofstream& file, ft::stack<T> s, size_t id = 0, const std::string& delimiter = "\n")
+{
+	size_t n_elems = s.size();
+	file << "stack" << id << ":\n";
+	for (; !s.empty(); --n_elems)
+	{
+		file << "[ " << s.top() << " ]" << delimiter;
+		s.pop();
+	}
+}
 
 void	test_stack(std::ofstream& file)
 {
@@ -64,6 +76,42 @@ void	test_stack(std::ofstream& file)
 		file << "empty stack euqals to itself, ";
 	if (vector_stack != empty)
 		file << "empty stack does not equal to deque stack\n\n";
+
+	ft::stack<int> stack0;
+	stack0.push(1);
+	stack0.push(2);
+	stack0.push(3);
+	stack0.push(4);
+	print_stack(file, stack0, 0);
+
+	ft::stack<int> stack1 = stack0;
+	print_stack(file, stack1, 1);
+
+	ft::stack<int> stack2(stack1);
+	print_stack(file, stack2, 2);
+
+	stack1.pop();
+
+	stack2.pop();
+	stack2.pop();
+
+	file << stack0.top() << std::endl;
+	file << stack1.top() << std::endl;
+	file << stack2.top() << std::endl;
+
+	stack2.pop();
+	stack2.pop();
+	file << std::boolalpha << "Stack2 is empty: " << stack2.empty() << '\n';
+	file << std::boolalpha << "Stack0 is empty: " << stack0.empty() << '\n';
+	file << "Stack2 size: " << stack2.size() << '\n';
+	file << "Stack0 size: " << stack0.size() << '\n';
+
+	file << "1) " << std::boolalpha << (stack0 == stack1) << std::endl;
+	file << "2) " << std::boolalpha << (stack0 != stack1) << std::endl;
+	file << "3) " << std::boolalpha << (stack0 <  stack1) << std::endl;
+	file << "4) " << std::boolalpha << (stack0 >  stack1) << std::endl;
+	file << "5) " << std::boolalpha << (stack0 >= stack1) << std::endl;
+	file << "6) " << std::boolalpha << (stack0 <= stack1) << std::endl;
 
 	gettimeofday(&end, NULL);
 	double time_taken;

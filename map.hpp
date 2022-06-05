@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 22:01:25 by mwen              #+#    #+#             */
-/*   Updated: 2022/05/31 22:24:34 by mwen             ###   ########.fr       */
+/*   Updated: 2022/06/04 16:02:14 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ namespace ft
 		typedef typename Alloc::pointer										pointer;
 		typedef typename Alloc::const_pointer								const_pointer;
 
-	private:
+	protected:
 		typedef typename ft::_Rb_tree<key_type, value_type, ft::_Select1st<value_type>, key_compare, Alloc> _Rep_type;
 		_Rep_type	tree;
-	
+
 	public:
 		typedef typename _Rep_type::iterator								iterator;
 		typedef typename _Rep_type::const_iterator							const_iterator;
@@ -137,30 +137,34 @@ namespace ft
 		ft::pair<const_iterator, const_iterator>	equal_range(const key_type& k) const { return tree.equal_range(k); }
 
 		allocator_type				get_allocator() const { return tree.get_allocator(); }
+		template<typename _K1, typename _T1, typename _C1, typename _A1>
+		friend bool operator==(const map<_K1, _T1, _C1, _A1>&, const map<_K1, _T1, _C1, _A1>&);
+		template<typename _K1, typename _T1, typename _C1, typename _A1>
+		friend bool operator<(const map<_K1, _T1, _C1, _A1>&, const map<_K1, _T1, _C1, _A1>&);
 	};
 	
 	template<typename _Key, typename _Tp, typename _Compare, typename _Alloc>
-	bool operator==(const map<_Key, _Tp, _Compare, _Alloc>& __x, const map<_Key, _Tp, _Compare, _Alloc>& __y)
+	inline bool operator==(const map<_Key, _Tp, _Compare, _Alloc>& __x, const map<_Key, _Tp, _Compare, _Alloc>& __y)
 	{ return __x.tree == __y.tree; }
 
 	template<typename _Key, typename _Tp, typename _Compare, typename _Alloc>
-	bool operator<(const map<_Key, _Tp, _Compare, _Alloc>& __x, const map<_Key, _Tp, _Compare, _Alloc>& __y)
+	inline bool operator<(const map<_Key, _Tp, _Compare, _Alloc>& __x, const map<_Key, _Tp, _Compare, _Alloc>& __y)
 	{ return __x.tree < __y.tree; }
 
 	template<typename _Key, typename _Tp, typename _Compare, typename _Alloc>
-	bool operator!=(const map<_Key, _Tp, _Compare, _Alloc>& __x, const map<_Key, _Tp, _Compare, _Alloc>& __y)
+	inline bool operator!=(const map<_Key, _Tp, _Compare, _Alloc>& __x, const map<_Key, _Tp, _Compare, _Alloc>& __y)
 	{ return !(__x == __y); }
 
 	template<typename _Key, typename _Tp, typename _Compare, typename _Alloc>
-	bool operator>(const map<_Key, _Tp, _Compare, _Alloc>& __x, const map<_Key, _Tp, _Compare, _Alloc>& __y)
+	inline bool operator>(const map<_Key, _Tp, _Compare, _Alloc>& __x, const map<_Key, _Tp, _Compare, _Alloc>& __y)
 	{ return __y < __x; }
 
 	template<typename _Key, typename _Tp, typename _Compare, typename _Alloc>
-	bool operator<=(const map<_Key, _Tp, _Compare, _Alloc>& __x, const map<_Key, _Tp, _Compare, _Alloc>& __y)
+	inline bool operator<=(const map<_Key, _Tp, _Compare, _Alloc>& __x, const map<_Key, _Tp, _Compare, _Alloc>& __y)
 	{ return !(__y < __x); }
 
 	template<typename _Key, typename _Tp, typename _Compare, typename _Alloc>
-	bool operator>=(const map<_Key, _Tp, _Compare, _Alloc>& __x, const map<_Key, _Tp, _Compare, _Alloc>& __y)
+	inline bool operator>=(const map<_Key, _Tp, _Compare, _Alloc>& __x, const map<_Key, _Tp, _Compare, _Alloc>& __y)
 	{ return !(__x < __y); }
 }
 
