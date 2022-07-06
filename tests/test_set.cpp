@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:27:25 by mwen              #+#    #+#             */
-/*   Updated: 2022/06/04 21:40:05 by mwen             ###   ########.fr       */
+/*   Updated: 2022/07/06 23:22:33 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,11 +176,11 @@ void	test_set(std::ofstream& file)
 		file << "MALLOC FAILED";
 		return;
 	}
-	for(int i = 0; i < 5; i++)
-		p[i] = "get_allocator";
+	for (int i = 0; i < 5; i++)
+		*(p + i) = "get_allocator";
 	file << "Output:\n";
-	for(int i = 0; i < 5; i++)
-		file << p[i] << ' ';
+	for (int i = 0; i < 5; i++)
+		file << *(p + i) << ' ';
 	file << "\n\n";
 	first.get_allocator().deallocate(p,5);
 
@@ -282,9 +282,9 @@ void	test_set(std::ofstream& file)
 
 	//better this way !
 	if (s6.find("USP") == s6.end())
-			file << "USP not found" << std::endl;
+		file << "USP not found" << std::endl;
 	else
-			file << "USP found" << std::endl;
+		file << "USP found" << std::endl;
 
 	//same here, equal_range returns a pair of iterators, take care that you
 	//are not going to try dereferencing end()

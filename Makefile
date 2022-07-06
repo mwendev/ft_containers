@@ -6,14 +6,14 @@
 #    By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/18 11:39:36 by mwen              #+#    #+#              #
-#    Updated: 2022/07/06 11:11:21 by mwen             ###   ########.fr        #
+#    Updated: 2022/07/06 16:57:44 by mwen             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	ft_containers
 SRC		=	*.cpp tests/*.cpp
 CC		=	c++
-CFLAG	=	-Wall -Wextra -Werror -std=c++98
+CFLAG	=	-Wall -Wextra -Werror -std=c++98 -g
 
 .SILENT:
 

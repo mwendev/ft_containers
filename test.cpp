@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 23:15:38 by mwen              #+#    #+#             */
-/*   Updated: 2022/07/06 11:28:33 by mwen             ###   ########.fr       */
+/*   Updated: 2022/07/06 20:42:23 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ public:
 
 int	main(int argc, char** argv)
 {
-	(void)argc;
+	if (argc != 2)
+		return 1;
 	const int seed = atoi(argv[1]);
 	srand(seed);
 
