@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 14:29:37 by mwen              #+#    #+#             */
-/*   Updated: 2022/07/06 12:08:35 by mwen             ###   ########.fr       */
+/*   Updated: 2022/07/06 12:16:16 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	test_vector_string(std::ofstream& file)
 	file << "\n\n";
 
 	file << "Test case: rbegin() and rend()\n";
-	file << "Output: " << *myvector.rbegin() << ' ' << *myvector.rend() << "\n\n";
+	file << "Output: " << *myvector.rbegin() << ' ' << *(myvector.rend() - 1) << "\n\n";
 
 	myvector.push_back("confused");
 	file << "Test case: push_back(), size(), max_size(), capacity() \n";

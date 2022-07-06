@@ -1,0 +1,706 @@
+should be constant with the same seed: 0
+abcdefghijklmnopqrstuvwxyz
+
+[Reverse Iterator Test - vector<int> - non member functions]
+
+Original iterator:  0 2 4 6 8
+
+Test case: substraction operator (1)
+Output: there are 5 elements.
+
+Test case: addition operator (1)
+Output: value of 3 + the begin of reverse_iterator is 2
+
+Test case: relational operators (==, !=, <, >, <=, >=)
+Output: reverse_iterator of the original iterator is 8 6 4 2 0
+
+[Reverse Iterator Test - vector<int> - member functions]
+
+Test case: constructers and dereference (*)
+
+Output: initialization 8
+
+Output: copy 8
+
+Test case: base()
+Output: the base of reverse_iterator_begin is 8
+
+Test case: addition operator (2)
+Output: reverse_iterator_begin + 3 is 0
+
+Test case: increment (++)
+Output (pre): ++reverse_iterator_begin is 4
+Output (post): reverse_iterator_begin++ is 8
+
+Test case: advance iterator
+Output: reverse_iterator_begin += 3 is 2
+
+Test case: substraction operator
+Output: reverse_iterator_end - 3 is 4
+
+Test case: decrease (--)
+Output (pre): --reverse_iterator_end is 0
+Output (post): reverse_iterator_end-- is 0
+
+Test case: retrocede iterator (end -= 3)
+Output: reverse_iterator_end -= 34
+
+Test case: dereference with offset
+Output: reverse_iterator[3] is 2
+
+[Reverse Iterator Test - map<int, string>]
+
+Original iterator: 
+1 apple
+2 orange
+3 banana
+
+Test case: dereference iterator (->)
+Output: 
+3 banana
+2 orange
+1 apple
+
+[Reverse Iterator Test - vector<char>
+
+Output: hello world
+
+[Vector Test - vector<int> - member functions]
+
+Test case: constructers
+Output: 100 100 100 100, now the size is 4, capacity is 4
+
+Test case: copy operator
+Output: 88 88 88 88 88 88, now the size is 6, capacity is 6
+
+Test case: begin() and end()
+Output: 88 88 88 88 88 10 88, now the size is 7, capacity is 12
+
+Test case: rbegin() and rend()
+Output: 88 88
+
+Test case: push_back(), size(), max_size(), capacity() 
+Output: 88 88 88 88 88 10 88 999, now the size is 8, max size is 4611686018427387903, capacity is 12
+
+Test case: empty() 
+Output: is the vector empty? 0
+Output: is a new vector empty? 1
+
+Test case: resize() 
+Output: n > _size  88 88 88 88 88 10 88 999 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0, now the size is 25, capacity is 25
+Output: n < _size  88 88 88 88 88 10 88 999, now the size is 8, capacity is 25
+
+Test case: operator[] 
+Output: the 6th element in the vector is 88
+
+Test case: at() 
+Output: Trying to reach the 50th element vector
+
+Test case: front() back() 
+Output: front is 88 , back is 999
+
+Test case: assign() 
+Output: init a new vector with 2 elements  42 42 42, now the size is 3, capacity is 3
+Output: the new vector takes 3 elements of the old vector  88 88 88, now the size is 3, capacity is 3
+Output: assign the old vector to be have 5 of new elements 1 1 1 1 1, now the size is 5, capacity is 25
+
+Test case: insert() 
+Output: insert at position 3 - 1 1 1 5 1 1, now the size is 6, capacity is 25, return value 5
+Output: insert at position 3 for 5 time - 1 1 1 42 42 42 42 42 5 1 1, now the size is 11, capacity is 25
+Output: insert with input iterator - 88 88 88 1 1 1 42 42 42 42 42 5 1 1, now the size is 14, capacity is 25
+
+Test case: erase() 
+Output: erase at position 3 - 88 88 88 1 1 42 42 42 42 42 5 1 1, return value 1
+
+Test case: swap() 
+Output: swap with the new vector from assign()  88 88 88, now the size is 3, capacity is 3
+
+Test case: clear() 
+Output: clear and push_back 1 element  1218, now the size is 1, capacity is 3
+
+Test case: get_allocator() 
+Output: allocate and construct 1 element 999
+
+Test case: relational operators 
+Output: swap() vector is larger than clear() vector, clear() vector euqals to itself, swap() vector does not equal to clear() vector
+
+[Vector Test - vector<string> - member functions]
+
+Test case: constructers
+Output: strange strange strange strange, now the size is 4, capacity is 4
+
+Test case: copy operator
+Output: why why why why why why, now the size is 6, capacity is 6
+
+Test case: begin() and end()
+Output: why why why why why why end
+
+Test case: rbegin() and rend()
+Output: end why
+
+Test case: push_back(), size(), max_size(), capacity() 
+Output: why why why why why why end confused, now the size is 8, max size is 768614336404564650, capacity is 12
+
+Test case: empty() 
+Output: is the vector empty? 0
+Output: is a new vector empty? 1
+
+Test case: resize() 
+Output: n > _size  why why why why why why end confused                 , now the size is 25, capacity is 25
+Output: n < _size  why why why why why why end confused, now the size is 8, capacity is 25
+
+Test case: operator[] 
+Output: the 6th element in the vector is end
+
+Test case: at() 
+Output: Trying to reach the 50th element vector
+
+Test case: front() back() 
+Output: front is why , back is confused
+
+Test case: assign() 
+Output: init a new vector with 2 elements  new new new, now the size is 3, capacity is 3
+Output: the new vector takes 3 elements of the old vector  why why why, now the size is 3, capacity is 3
+Output: assign the old vector to be have 5 of new elements Added Added Added Added Added, now the size is 5, capacity is 25
+
+Test case: insert() 
+Output: insert at position 3 - Added Added Added hi Added Added, now the size is 6, capacity is 25, return value hi
+Output: insert at position 3 for 5 time - Added Added Added hi hi hi hi hi hi Added Added, now the size is 11, capacity is 25
+Output: insert with input iterator - why why why Added Added Added hi hi hi hi hi hi Added Added, now the size is 14, capacity is 25
+
+Test case: erase() 
+Output: erase at position 3 - why why why Added Added hi hi hi hi hi hi Added Added, return value Added
+
+Test case: swap() 
+Output: swap with the new vector from assign()  why why why, now the size is 3, capacity is 3
+
+Test case: clear() 
+Output: clear and push_back 1 element  newly pushed, now the size is 1, capacity is 3
+
+Test case: get_allocator() 
+Output: allocate and construct 1 element yeah
+
+Test case: relational operators 
+Output: swap() vector is larger than clear() vector, clear() vector euqals to itself, swap() vector does not equal to clear() vector
+
+[Vector Test - vector<int/string> general test
+
+vector1: [ ]
+vector2: [ 42 42 42 42 42 42 42 42 ]
+vector3: [ 42 42 42 42 42 ]
+vector4: [ 42 42 42 42 42 ]
+vector5: [ 42 42 42 42 42 ]
+v1 is empty: 1
+v5 is empty: 0
+v1 has size 0 and capacity 0
+v5 has size 5 and capacity 5
+v1 has max size of 4611686018427387903
+v5 has max size of 4611686018427387903
+vector5: [ 42 42 42 42 42 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ]
+0
+0
+42
+0
+vector6: [ 100 100 100 100 100 100 100 ]
+vector6: [ 42 42 0 0 0 0 0 0 0 0 ]
+vector6: [ 42 42 0 0 0 0 0 0 0 ]
+vector6: [ 42 0 0 0 ]
+vector
+vector7: [ 99 99 84 42 84 99 99 99 99 99 ]
+vector8: [ 99 99 84 42 84 99 99 99 99 99 66 97 62 28 66 57 12 ]
+vector8: [ ]
+vector8: [ 0 0 0 0 0 1 1 1 1 1 40 41 42 84 42 ]
+vector1: [ 0 1 2 3 4 5 6 7 8 9 10 11 ]
+it1 = v1.begin()
+it2 = v1.begin() + 3
+it3 = v1.end() - 2;
+
+*(it1): 0
+(it2 - it1): 3
+*(it1 + 1): 1
+*(1 + it1): 1
+*(it2 - 1): 2
+*(-1 + it2): 2
+*(it1++): 0 -> 1
+*(it2++): 3 -> 4
+*(++it1): 2 -> 2
+*(++it2): 5 -> 5
+*(it1--): 2 -> 1
+*(it2--): 5 -> 4
+*(--it1): 0 -> 0
+*(--it2): 3 -> 3
+*(it1 += 3): 0 -> 3
+*(it2 += 3): 3 -> 6
+*(it1 -= 1): 3 -> 2
+*(it2 -= 1): 6 -> 5
+*(it4): 5
+*(it4++): 5 -> 4
+*(++it4): 3 -> 3
+*(it4--): 3 -> 4
+*(--it4): 5 -> 5
+*(it4 + 3): 2
+*(it4 - 3): 8
+it4 - it5: 6
+*cit1: 0
+*cit2: 3
+vector1: [ 55 1 2 3 4 5 6 7 8 9 10 11 ]
+vector2: [ 42 42 42 42 42 42 42 42 ]
+false
+true
+false
+true
+true
+false
+vector1: [ 42 42 42 42 42 42 42 42 ]
+vector2: [ 55 1 2 3 4 5 6 7 8 9 10 11 ]
+[Pair Test - pair<string, double> & make_pair() - member functions]
+
+Test case: constructers & copy assignment operator
+Output:
+The price of lightbulbs is $0.99
+The price of shoes is $39.9
+The price of tomatoes is $2.3
+
+[Pair Test - pair<int, char> - relational operators]
+
+Test case: 
+Pair foo is 10, z
+Pair bar is 90, a
+Output:
+foo and bar are not equal
+foo is less than bar
+foo is less than or equal to bar
+[Map Test - map<char, int> - member functions]
+
+Test case: constructers
+Output:
+ <a, 10>
+ <b, 50>
+ <c, 20>
+ <d, 70>
+
+Test case: copy operator
+Output: init an new map and make it = old map:
+ <c, 42>
+ <e, 42>
+ <h, 42>
+ <p, 42>
+ <x, 42>
+
+Test case: begin() and end()
+Output:
+ <c, 42>
+ <e, 42>
+ <h, 42>
+ <p, 42>
+ <x, 42>
+
+Test case: rbegin() and end()
+Output:
+ <x, 42>
+ <p, 42>
+ <h, 42>
+ <e, 42>
+ <c, 42>
+
+Test case: empty() 
+Output: is the map empty? false
+Output: is a new map empty? true
+
+Test case: size() and max_size()
+Output: the size of the first map is 4, and the max_size is 461168601842738790
+Output: the size of the second map is 5, and the max_size is 461168601842738790
+
+Test case: operator[] and at()
+Output: map['b'] is 50, at('d') is 70
+
+Test case: insert()
+Output - pair<iterator,bool> insert (const value_type& val)
+ <a, 10>
+ <b, 50>
+ <c, 20>
+ <d, 70>
+ <e, 64>
+ <f, 128>
+ <g, 256>
+ <h, 512>
+ <i, 1024>
+ <j, 2048>
+ <k, 4096>
+ <l, 8192>
+ <m, 16384>
+ <n, 32768>
+ <o, 65536>
+ <p, 131072>
+ <q, 262144>
+ <r, 524288>
+ <s, 1048576>
+ <t, 2097152>
+ <u, 4194304>
+ <v, 8388608>
+ <w, 16777216>
+ <x, 33554432>
+ <y, 67108864>
+ <z, 134217728>
+
+Output - iterator insert (iterator position, const value_type& val)
+Element 'z' already existed with a value of 134217728
+
+Output - range insert
+ <c, 42>
+ <e, 42>
+ <h, 42>
+ <p, 42>
+ <x, 42>
+
+Test case: erase()
+Output - void erase (iterator position)
+ <e, 42>
+ <h, 42>
+ <p, 42>
+ <x, 42>
+Output - size_type erase (const key_type& k)
+ <e, 42>
+ <h, 42>
+ <x, 42>
+Output - void erase (iterator first, iterator last)
+ <e, 42>
+ <h, 42>
+
+Test case: swap()
+Output: swaping the old map with the new
+The old one is now :
+ <e, 42>
+ <h, 42>
+The new one is now :
+ <a, 10>
+ <b, 50>
+ <c, 20>
+ <d, 70>
+ <e, 64>
+ <f, 128>
+ <g, 256>
+ <h, 512>
+ <i, 1024>
+ <j, 2048>
+ <k, 4096>
+ <l, 8192>
+ <m, 16384>
+ <n, 32768>
+ <o, 65536>
+ <p, 131072>
+ <q, 262144>
+ <r, 524288>
+ <s, 1048576>
+ <t, 2097152>
+ <u, 4194304>
+ <v, 8388608>
+ <w, 16777216>
+ <x, 33554432>
+ <y, 67108864>
+ <z, 134217728>
+
+Test case: clear()
+Output: clear new map and check if it's empty
+Output: is the map empty? true
+
+Test case: key_comp()
+Output: 
+Key 'e' is smaller than key 'h'
+
+Test case: value_comp()
+Output: 
+Value of 'e' is smaller than value of 'h'
+Test case: find()
+Output: value of 'e' is 42
+
+Test case: count()
+Output: number of element of 'e' is 1
+
+Test case: lower_bound()
+Output: lower bound of 'e' is e, 42
+
+Test case: upper_bound()
+Output: upper bound of 'e' is h, 42
+
+Test case: euqal_range()
+Output: equal range of 'e' is e, 42
+
+Test case: get_allocator()
+Output: The allocated array has a size of 40 bytes.
+true
+false
+Initial map: CPU = 10; GPU = 15; RAM = 20; 
+Updated map: CPU = 25; GPU = 15; RAM = 20; SSD = 30; 
+m1[UPS] = 0
+Updated map: CPU = 25; GPU = 15; RAM = 20; SSD = 30; UPS = 0; 
+After erase: CPU = 25; RAM = 20; SSD = 30; UPS = 0; 
+m.size() = 4
+Copy constructed map: CPU = 25; RAM = 20; SSD = 30; UPS = 0; 
+m1 and m2 are equivalent: true
+Updated map: CPU = 25; PSU = 34; RAM = 20; SSD = 30; UPS = 0; sPeripherals = 12; 
+m1 and m2 are equivalent: false
+Swapped map: CPU = 25; RAM = 20; SSD = 30; UPS = 0; 
+m3: CPU = 25; PSU = 34; RAM = 20; SSD = 30; UPS = 0; sPeripherals = 12; 
+Begin --- Key: CPU | Value: 25
+End   --- Key: sPeripherals | Value: 12
+Reverse Begin --- Key: sPeripherals | Value: 12
+Reverse End   --- Key: CPU | Value: 25
+m4: CPU = 25; PSU = 34; RAM = 20; SSD = 30; UPS = 0; 
+m4 size = 5
+m4 size = 288230376151711743
+m2: CPU = 25; Mousepad = 5; RAM = 20; SSD = 30; UPS = 0; 
+m5: CPU = 25; Mousepad = 5; PSU = 34; RAM = 20; SSD = 30; UPS = 0; 
+m6: Mousepad = 5; PSU = 34; RAM = 20; SSD = 30; UPS = 0; 
+m2: CPU = 25; Mousepad = 5; RAM = 20; SSD = 30; UPS = 0; 
+M6 size is 5
+erased: m6: 
+m6: CPU = 25; Mousepad = 5; PSU = 34; RAM = 20; SSD = 30; UPS = 0; 
+swapped with m5: 
+0
+0
+RAM not found
+UPS not found
+m5: 
+PSU = 34
+RAM = 20
+PSU = 34
+RAM = 20
+1) false
+2) true
+3) false
+4) true
+5) true
+6) false
+Python is lexicographically less than C: false
+false
+C is lexicographically less than C++: true
+C comp C++ : true
+Key "SSD" is in the map: 1
+Key "Stereo" is in the map: 0
+Map is empty: true
+true
+false
+Initial map: CPU = 10; GPU = 15; RAM = 20; 
+Updated map: CPU = 25; GPU = 15; RAM = 20; SSD = 30; 
+m1[UPS] = 0
+Updated map: CPU = 25; GPU = 15; RAM = 20; SSD = 30; UPS = 0; 
+const iterator
+CPU
+GPU
+RAM
+SSD
+UPS
+iterator
+CPU
+GPU
+RAM
+SSD
+UPS
+reverse_iterator
+UPS
+SSD
+RAM
+GPU
+CPU
+const_reverse_iterator
+UPS
+SSD
+RAM
+GPU
+CPU
+[Stack Test - stack<string> - member functions]
+
+Test case: constructer and empty() and size()
+Output:
+Init a vector(2, "vector") and a stack(4, "deque")
+First stack is constructed without using other containers, the size is0
+Second stack is constructed using vector, the size is 2
+Third stack is constructed using deque, the size is 4
+Is the first stack empty? true
+
+Test case: push() and top()
+Output: stack using vector's newly pushed element is... new! and the size is 3
+
+Test case: pop()
+Output: after pop() the top is... vector and the size is 2
+
+Test case: relational operators 
+Output: vector stack is larger than empty stack, empty stack euqals to itself, empty stack does not equal to deque stack
+
+stack0:
+[ 4 ]
+[ 3 ]
+[ 2 ]
+[ 1 ]
+stack1:
+[ 4 ]
+[ 3 ]
+[ 2 ]
+[ 1 ]
+stack2:
+[ 4 ]
+[ 3 ]
+[ 2 ]
+[ 1 ]
+4
+3
+2
+Stack2 is empty: true
+Stack0 is empty: false
+Stack2 size: 0
+Stack0 size: 4
+1) false
+2) true
+3) false
+4) true
+5) true
+6) false
+[Set Test - set<std::string> - member functions]
+
+Test case: constructers
+Output:
+ Hi a constructed have set you
+
+Test case: copy operator
+Output: init an new set and make it = old set:  cat complaining is
+
+Test case: begin() and end()
+Output: cat complaining is
+
+Test case: rbegin() and end()
+Output: is complaining cat
+
+Test case: empty() 
+Output: is the set empty? false
+Output: is a new set empty? true
+
+Test case: size() and max_size()
+Output: the size of the first set is 6, and the max_size is 329406144173384850
+Output: the size of the second set is 3, and the max_size is 329406144173384850
+
+Test case: insert()
+Output - pair<iterator,bool> insert (const value_type& val)
+cat complaining is newly inserted 
+
+Output - iterator insert (iterator position, const value_type& val)
+cat complaining is newly inserted yoooo 
+newly inserted string is yoooo
+
+Output - range insert
+Hi a cat complaining constructed have is set you 
+
+Test case: erase()
+Output - void erase (iterator position)
+cat complaining newly inserted yoooo 
+
+Output - size_type erase (const key_type& k)
+cat complaining newly inserted yoooo 
+
+Output - void erase (iterator first, iterator last)
+cat 
+
+Test case: swap()
+Output: swaping the old set with the new
+The old one is now :
+cat 
+The new one is now :
+Hi a constructed have set you 
+Test case: clear()
+Output: clear current set and check if it's empty
+Output: is the set empty? true
+
+Test case: key_comp()
+Output: 
+First key is smaller than last key
+
+Test case: value_comp()
+Output: 
+First value o is smaller than last value
+Test case: find()
+Output: tring to find value of "Hi"... Hi
+
+Test case: count()
+Output: number of element of "Hi" is 1
+
+Test case: lower_bound()
+Output: lower bound of "Hi" is Hi
+
+Test case: upper_bound()
+Output: upper bound of "Hi" is a
+
+Test case: euqal_range()
+Output: equal range of "Hi" is Hi, a
+
+Test case: get_allocator()
+Output:
+get_allocator get_allocator get_allocator get_allocator get_allocator 
+
+
+SET
+
+true
+false
+Initial set: CPU -> GPU -> RAM -> (end)
+Updated set: CPU -> GPU -> RAM -> SSD -> (end)
+After erase: CPU -> RAM -> SSD -> (end)
+m.size() = 3
+Copy constructed set: CPU -> RAM -> SSD -> (end)
+s1 and s2 are equivalent: true
+Updated set: CPU -> PSU -> Peripherals -> RAM -> SSD -> (end)
+s1 and s2 are equivalent: false
+Swapped set: CPU -> RAM -> SSD -> (end)
+Python is lexicographically less than C: false
+false
+C is lexicographically less than C++: true
+true
+Key "SSD" is in the set: 1
+Key "Stereo" is in the set: 0
+s3: CPU -> PSU -> Peripherals -> RAM -> SSD -> (end)
+Begin --- Key: CPU
+End   --- Key: SSD
+Reverse Begin --- Key: SSD
+Reverse End   --- Key: CPU
+s4: CPU -> PSU -> Peripherals -> RAM -> (end)
+s4 size = 4
+s4 size = 329406144173384850
+s2: CPU -> RAM -> SSD -> (end)
+s5: CPU -> PSU -> Peripherals -> RAM -> SSD -> (end)
+s6: PSU -> Peripherals -> RAM -> SSD -> (end)
+s6: (end)
+s6: CPU -> PSU -> Peripherals -> RAM -> SSD -> (end)
+0
+0
+RAM
+PSU
+USP not found
+PSU = PSU
+PSU = Peripherals
+PSU = PSU
+Peripherals = Peripherals
+false
+true
+false
+true
+true
+false
+Set is empty: true
+true
+false
+Initial set: CPU -> GPU -> RAM -> (end)
+const iterator
+CPU
+GPU
+RAM
+iterator
+CPU
+GPU
+RAM
+reverse_iterator
+RAM
+GPU
+CPU
+const_reverse_iterator
+RAM
+GPU
+CPU
