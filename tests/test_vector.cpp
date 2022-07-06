@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 14:29:37 by mwen              #+#    #+#             */
-/*   Updated: 2022/06/04 20:43:21 by mwen             ###   ########.fr       */
+/*   Updated: 2022/07/06 12:08:35 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,7 +230,7 @@ void	test_vector_int(std::ofstream& file)
 	file << "\n\n";
 
 	file << "Test case: rbegin() and rend()\n";
-	file << "Output: " << *first.rbegin() << ' ' << *first.rend() << "\n\n";
+	file << "Output: " << *first.rbegin() << ' ' << *(first.rend() - 1) << "\n\n";
 
 	first.push_back(999);
 	file << "Test case: push_back(), size(), max_size(), capacity() \n";
@@ -376,6 +376,8 @@ void	test_vector(std::ofstream& file)
 
 	test_vector_int(file);
 	test_vector_string(file);
+
+	file << "[Vector Test - vector<int/string> general test\n\n";
 
 	ft::vector<int> v1;
 	print_vector(file, v1, 1);

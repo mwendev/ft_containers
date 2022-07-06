@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 20:08:31 by mwen              #+#    #+#             */
-/*   Updated: 2022/05/31 23:21:04 by mwen             ###   ########.fr       */
+/*   Updated: 2022/07/06 12:07:10 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,13 +120,14 @@ void test_iterator(std::ofstream& file)
 		file << rev_iterator->first << ' ' << rev_iterator->second << '\n';
 	file << '\n';
 
-	file << "[Reverse Iterator Test - vector<chr>\n\n";
+	file << "[Reverse Iterator Test - vector<char>\n\n";
 	std::vector<std::string> strVec;
 	strVec.push_back("hello");
 	strVec.push_back("world");
 	file << "Output:";
 	for (std::vector<std::string>::iterator it = strVec.begin(); it != strVec.end(); ++it)
 		file << ' ' << *it;
+	file << "\n\n";
 
 	gettimeofday(&end, NULL);
 	double time_taken;
