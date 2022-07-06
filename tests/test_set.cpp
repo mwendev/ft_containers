@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:27:25 by mwen              #+#    #+#             */
-/*   Updated: 2022/07/06 23:22:33 by mwen             ###   ########.fr       */
+/*   Updated: 2022/07/06 23:33:48 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,7 @@ void	test_set(std::ofstream& file)
 		return;
 	}
 	for (int i = 0; i < 5; i++)
-		*(p + i) = "get_allocator";
+		first.get_allocator().construct(p + i, "get_allocator");
 	file << "Output:\n";
 	for (int i = 0; i < 5; i++)
 		file << *(p + i) << ' ';
