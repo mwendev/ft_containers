@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 23:15:38 by mwen              #+#    #+#             */
-/*   Updated: 2022/06/04 20:54:29 by mwen             ###   ########.fr       */
+/*   Updated: 2022/07/06 11:07:54 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <time.h>
 #include "test.h"
 
-#if TEST == 1
+#if (TEST == 1)
 	#include <map>
 	#include <stack>
 	#include <vector>
@@ -69,71 +69,71 @@ int	main(int argc, char** argv)
 
 	std::ofstream file;
 	
-	if (TEST)
+	if (TEST == 1)
 		file.open("STL_output.txt", std::ios::out);
 	else
 		file.open("ft_containers_output.txt", std::ios::out);
 
 	if (file.is_open())
 	{
-		//schoo main
-		// ft::vector<std::string> vector_str;
-		// ft::vector<int> vector_int;
-		// ft::stack<int> stack_int;
-		// ft::vector<Buffer> vector_buffer;
-		// ft::stack<Buffer, std::deque<Buffer> > stack_deq_buffer;
-		// ft::map<int, int> map_int;
+		//school main
+		ft::vector<std::string> vector_str;
+		ft::vector<int> vector_int;
+		ft::stack<int> stack_int;
+		ft::vector<Buffer> vector_buffer;
+		ft::stack<Buffer, std::deque<Buffer> > stack_deq_buffer;
+		ft::map<int, int> map_int;
 
-		// for (int i = 0; i < COUNT; i++)
-		// {
-		// 	vector_buffer.push_back(Buffer());
-		// }
+		for (int i = 0; i < COUNT; i++)
+		{
+			vector_buffer.push_back(Buffer());
+		}
 
-		// for (int i = 0; i < COUNT; i++)
-		// {
-		// 	const int idx = rand() % COUNT;
-		// 	vector_buffer[idx].idx = 5;
-		// }
-		// ft::vector<Buffer>().swap(vector_buffer);
+		for (int i = 0; i < COUNT; i++)
+		{
+			const int idx = rand() % COUNT;
+			vector_buffer[idx].idx = 5;
+		}
+		ft::vector<Buffer>().swap(vector_buffer);
 
-		// try
-		// {
-		// 	for (int i = 0; i < COUNT; i++)
-		// 	{
-		// 		const int idx = rand() % COUNT;
-		// 		(void)vector_buffer.at(idx);
-		// 		std::cerr << "Error: THIS VECTOR SHOULD BE EMPTY!!" <<std::endl;
-		// 	}
-		// }
-		// catch(const std::exception& e)
-		// {
-		// 	//NORMAL ! :P
-		// }
+		try
+		{
+			for (int i = 0; i < COUNT; i++)
+			{
+				const int idx = rand() % COUNT;
+				(void)vector_buffer.at(idx);
+				std::cerr << "Error: THIS VECTOR SHOULD BE EMPTY!!" <<std::endl;
+			}
+		}
+		catch(const std::exception& e)
+		{
+			//NORMAL ! :P
+		}
 		
-		// for (int i = 0; i < COUNT; ++i)
-		// {
-		// 	map_int.insert(ft::make_pair(rand(), rand()));
-		// }
+		for (int i = 0; i < COUNT; ++i)
+		{
+			map_int.insert(ft::make_pair(rand(), rand()));
+		}
 
-		// int sum = 0;
-		// for (int i = 0; i < 10000; i++)
-		// {
-		// 	int access = rand();
-		// 	sum += map_int[access];
-		// }
-		// file << "should be constant with the same seed: " << sum << std::endl;
+		int sum = 0;
+		for (int i = 0; i < 10000; i++)
+		{
+			int access = rand();
+			sum += map_int[access];
+		}
+		file << "should be constant with the same seed: " << sum << std::endl;
 
-		// {
-		// 	ft::map<int, int> copy = map_int;
-		// }
-		// MutantStack<char> iterable_stack;
-		// for (char letter = 'a'; letter <= 'z'; letter++)
-		// 	iterable_stack.push(letter);
-		// for (MutantStack<char>::iterator it = iterable_stack.begin(); it != iterable_stack.end(); it++)
-		// {
-		// 	file << *it;
-		// }
-		// file << std::endl;
+		{
+			ft::map<int, int> copy = map_int;
+		}
+		MutantStack<char> iterable_stack;
+		for (char letter = 'a'; letter <= 'z'; letter++)
+			iterable_stack.push(letter);
+		for (MutantStack<char>::iterator it = iterable_stack.begin(); it != iterable_stack.end(); it++)
+		{
+			file << *it;
+		}
+		file << std::endl;
 
 		//my tests
 		test_iterator(file);

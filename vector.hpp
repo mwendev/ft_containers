@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 21:06:53 by mwen              #+#    #+#             */
-/*   Updated: 2022/06/05 09:53:19 by mwen             ###   ########.fr       */
+/*   Updated: 2022/06/05 12:56:57 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -610,7 +610,7 @@ namespace ft
 				if (this->_M_impl._M_finish != this->_M_impl._M_end_of_storage)
 				{
 					_Tp __x_copy = __x;
-					_M_insert_aux(__position, std::move(__x_copy));
+					_M_insert_aux(__position, __x_copy);
 				}
 				else
 					_M_insert_aux(__position, __x);

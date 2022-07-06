@@ -6,7 +6,7 @@
 #    By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/18 11:39:36 by mwen              #+#    #+#              #
-#    Updated: 2022/06/04 20:59:39 by mwen             ###   ########.fr        #
+#    Updated: 2022/07/06 11:11:21 by mwen             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,7 @@ $(NAME):
 	printf '\033[32m[ ✔ ] %s\n\033[0m' "Check result.txt!"
 
 clean:
-	rm -rf objects result.txt
-	/bin/rm -f *.o
-	/bin/rm -rf ./objects/*.o
+	rm -rf result.txt
 	rm -rf STL_output.txt ft_containers_output.txt
 	printf '\033[31m[ ✔ ] %s\n\033[0m' "Cleaned ft_containers"
 
